@@ -1,0 +1,108 @@
+ 
+
+/* Index */
+.category_container{
+    width: 100%;
+    padding: 1vw 1vw;
+    background-color:var(--primary-color);
+    color: var(--light-text-color);
+}
+
+/* Mixin */
+.white-gradient {
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+
+/* Animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 7));
+    }
+}
+
+/* Styling */
+.slider {
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.slider::before,
+.slider::after {
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+}
+
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slide-track {
+    animation: scroll var(--animation-speed) linear infinite;
+    display: flex;
+    width: calc(200px * 14);
+}
+
+.slide {
+    height: 100px;
+    width: 250px;
+    flex-direction: column;
+}
+.slide img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+/* Applying Mixin */
+.slider::before,
+.slider::after {
+    @include white-gradient;
+}
+.offer-section{
+    width: 100%;
+    padding: 1vw 8vw;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:var(--white-color);
+}
+.offer{
+    display: flex;
+    justify-content: space-around;
+
+    padding: 0 8vw;
+    color:var(--white-color);
+}
+/* Home Section */
+#home{
+    background: url(../../public/images/product_01b.jpg);
+    width: 100%;
+    height: 90vh;
+    padding: 8vw 8vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 1rem 0;
+}
