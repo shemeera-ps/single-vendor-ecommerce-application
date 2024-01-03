@@ -31,9 +31,12 @@ class WishlistController extends SmartController
     }
 
     public function wishlistIndex(){
-        $categories=Category::all();
-        $wishlists=Wishlist::where('user_id',auth()->user()->id)->paginate(8);
-        return view('display.wishlist',['wishlists'=>$wishlists,'categories'=>$categories]);
+        if(auth()->user()){
+            $categories=Category::all();
+            $wishlists=Wishlist::where('user_id',auth()->user()->id)->paginate(8);
+            return view('display.wishlist',['wishlists'=>$wishlists,'categories'=>$categories]);
+        }
+        
     }
     public function addToWishlist(Request $request){
         $request->validate([

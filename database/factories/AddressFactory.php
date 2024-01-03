@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\AddressTag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
 
@@ -24,6 +25,7 @@ class AddressFactory extends Factory
             'city'=>fake()->city,
             'state'=>fake()->country,
             'pincode'=>fake()->citySuffix,
+            'tag_id'=>AddressTag::inRandomOrder()->first()->id,
         ];
     }
 }

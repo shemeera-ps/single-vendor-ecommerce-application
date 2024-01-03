@@ -1,21 +1,4 @@
 
-// document.addEventListener('DOMContentLoaded',()=>{
-//     const wishlist=document.getElementById('wishlist');
-//     console.log(wishlist);
-//     wishlist.addEventListener('mouseover',()=>{
-//         const message= document.createElement('span');
-//         message.textContent="You have no items in your wish list.";
-//         console.log(wishlist.offsetTop)
-//         message.style.top = wishlist.offsetTop + wishlist.offsetHeight +20+ "px";
-//         message.style.left = wishlist.offsetLeft - message.offsetWidth -250+ "px";
-        
-//         message.classList.add('wishlist');
-//         document.body.appendChild(message);
-//         wishlist.addEventListener('mouseout',()=>{
-//             document.body.removeChild(message);
-//         });
-//     });
-// });
 function showMessage() {
     if (this.ItemsCount === 0) {
         const message = document.createElement('span');
@@ -58,7 +41,7 @@ close.addEventListener('click',(e)=>{
     menuBar.style.display="flex";
     close.style.display="none";
 });
-console.log(nav);
+
 
 
 
@@ -93,11 +76,48 @@ closeBtn.addEventListener('click',(e)=>{
 
 
 
-const span=document.getElementById('span');
-const list=document.getElementById('block');
+// const span=document.getElementById('span');
+// const list=document.getElementById('block');
 
-span.addEventListener('mouseover',()=>{
-    list.style.display="flex";
+// span.addEventListener('mouseover',()=>{
+//     list.style.display="flex";
+// });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get all radio buttons
+    const radioButtons = document.querySelectorAll('input[name="address"]');
+    
+    // Add event listeners for mouseover and mouseout events
+    radioButtons.forEach(function (radioButton) {
+        radioButton.addEventListener('mouseover', function () {
+            const addressId = this.value;
+            showAddressDetails(addressId);
+        });
+
+        radioButton.addEventListener('mouseout', function () {
+            const addressId = this.value;
+            hideAddressDetails(addressId);
+        });
+    });
+
+    // Function to show address details
+    function showAddressDetails(addressId) {
+        const addressDetails = document.getElementById('address_' + addressId);
+        if (addressDetails) {
+            addressDetails.style.display = 'block';
+        }
+    }
+
+    // Function to hide address details
+    function hideAddressDetails(addressId) {
+        const addressDetails = document.getElementById('address_' + addressId);
+        if (addressDetails) {
+            addressDetails.style.display = 'none';
+        }
+    }
 });
-
-
+function setSelectedAddressId(radioButton) {
+    const selectedAddressId = radioButton.value;
+    document.getElementById('selectedAddressId').value = selectedAddressId;
+}

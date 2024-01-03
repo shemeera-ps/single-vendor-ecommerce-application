@@ -23,7 +23,7 @@
             </form>
             
             
-            <li class="text-base mr-4 absolute right-4 top-14 hidden transition-transform duration-300 ease-in-out">
+            <li class="text-base mr-4 absolute right-4 top-14 hidden transition-transform duration-300 ease-in-out z-10">
                 <a href="#" id="wishlist" class="transition-transform duration-300 ease-in-out font-light hover:text-dark-color">
                     <i class="ri-share-forward-line text-white  p-2 rounded-full bg-primary-color bg-opacity-15 backdrop-blur-md shadow-md text-center"></i>
                 </a>
@@ -39,7 +39,14 @@
                     </button>
                 </form>
             </div>
-            <img src="{{asset('images/product_01.jpg')}}" alt="">
+            <div class="flex group">
+                <div class="w-full relative transition-opacity duration-500 ease-in-out h-96">
+                   
+                        <img alt="{{asset('images/product_01.jpg')}}" src="{{  $wishlist->product->getSingleMediaUrl('image') }}" class="w-full group-hover:hidden">
+                        <img alt="{{asset('images/product_01.jpg')}}" src="{{  $wishlist->product->getSingleMediaUrl('imageSecond') }}" class="w-full hidden group-hover:flex">
+                    </a>
+                </div>
+            </div>
             <div class="product_details flex bg-white flex-col hover:shadow-md">
                 <div class="tags p-4 flex">
                     @foreach($wishlist->product->tags as $tag)

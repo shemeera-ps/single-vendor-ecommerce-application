@@ -1,13 +1,19 @@
 <?php
 
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AddressTagController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductTagController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuantityController;
+use App\Http\Controllers\SizeController;
 use App\Http\Controllers\WishlistController;
 use Modules\Ynotz\EasyAdmin\Services\RouteHelper;
 use Modules\Ynotz\AppSettings\Http\Controllers\AppSettingsController;
@@ -57,6 +63,30 @@ RouteHelper::getEasyRoutes(
     modelName:'Wishlist',
     controller:WishlistController::class
 );
+RouteHelper::getEasyRoutes(
+    modelName:'Quantity',
+    controller:QuantityController::class
+);
+RouteHelper::getEasyRoutes(
+    modelName:'Tag',
+    controller:TagController::class
+);
+RouteHelper::getEasyRoutes(
+    modelName:'ProductTag',
+    controller:ProductTagController::class
+);
+RouteHelper::getEasyRoutes(
+    modelName:'Address',
+    controller:AddressController::class
+);
+RouteHelper::getEasyRoutes(
+    modelName:'AddressTag',
+    controller:AddressTagController::class
+);
+RouteHelper::getEasyRoutes(
+    modelName:'Size',
+    controller:SizeController::class
+);
 
 Route::get('/index',[ProductController::class,'productIndex'])->name('productIndex');
 Route::get('/wishlist/items',[WishlistController::class,'wishlistIndex'])->name('wishlistIndex');
@@ -75,11 +105,14 @@ Route::post('/checkout{cart}',[OrderController::class,'checkout'])->name('checko
 
 Route::get('/orders',[OrderController::class,'orderIndex'])->name('orderIndex');
 
+Route::get('/payments',[OrderController::class,'payments'])->name('payments');
 
 Route::get('/showProducts/{category}',[CategoryController::class,'showProducts'])->name('showProducts');
 
 Route::get('/productDetail/{product}',[ProductController::class,'productShow'])->name('productShow');
 
 Route::post('/search',[ProductController::class,'search'])->name('search');
+
+Route::post('/setAddress',[AddressController::class,'setAddress'])->name('setAddress');
 
 require __DIR__.'/auth.php';

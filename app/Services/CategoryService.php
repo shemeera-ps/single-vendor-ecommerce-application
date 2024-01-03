@@ -10,6 +10,8 @@ use Modules\Ynotz\EasyAdmin\RenderDataFormats\CreatePageData;
 use Modules\Ynotz\EasyAdmin\RenderDataFormats\EditPageData;
 use Modules\Ynotz\EasyAdmin\Services\ColumnLayout;
 use Modules\Ynotz\EasyAdmin\Services\RowLayout;
+use Illuminate\Support\Str;
+use Modules\Ynotz\EasyAdmin\InputUpdateResponse;
 
 class CategoryService implements ModelViewConnector {
     use IsModelViewConnector;
@@ -62,38 +64,23 @@ class CategoryService implements ModelViewConnector {
 
     protected function getIndexHeaders(): array
     {
-        return [];
-        // // Example:
-        // return $this->indexTable->addHeaderColumn(
-        //     title: 'Title',
-        //     sort: ['key' => 'title'],
-        // )->addHeaderColumn(
-        //     title: 'Author',
-        //     filter: ['key' => 'author', 'options' => User::all()->pluck('name', 'id')]
-        // )->addHeaderColumn(
-        //     title: 'Review Score',
-        // )->addHeaderColumn(
-        //     title: 'Actions'
-        // )->getHeaderRow();
+        return $this->indexTable->addHeaderColumn(
+            title: 'Category',
+            sort: ['key' => 'name'],
+        )->addHeaderColumn(
+            title: 'Actions'
+        )->getHeaderRow();
     }
 
     protected function getIndexColumns(): array
     {
-        return [];
-        // // Example:
-        // return $this->indexTable->addColumn(
-        //     fields: ['title'],
-        // )->addColumn(
-        //     fields: ['name'],
-        //     relation: 'author',
-        // )->addColumn(
-        //     fields: ['score'],
-        //     relation: 'reviewScore',
-        // )
-        // ->addActionColumn(
-        //     editRoute: $this->getEditRoute(),
-        //     deleteRoute: $this->getDestroyRoute(),
-        // )->getRow();
+         return $this->indexTable->addColumn(
+            fields: ['name'],
+        )
+        ->addActionColumn(
+            editRoute: $this->getEditRoute(),
+            deleteRoute: $this->getDestroyRoute(),
+        )->getRow();
     }
 
     public function getAdvanceSearchFields(): array
@@ -183,20 +170,27 @@ class CategoryService implements ModelViewConnector {
 
     private function formElements(): array
     {
-        return [];
-        // // Example:
-        // return [
-        //     'title' => FormHelper::makeInput(
-        //         inputType: 'text',
-        //         key: 'title',
-        //         label: 'Title',
-        //         properties: ['required' => true],
-        //     ),
-        //     'description' => FormHelper::makeTextarea(
-        //         key: 'description',
-        //         label: 'Description'
-        //     ),
-        // ];
+        
+        return [
+            'name' => FormHelper::makeInput(
+                inputType: 'text',
+                key: 'name',
+                label: 'Category',
+                properties: ['required' => true],
+                fireInputEvent:true
+            ),
+            'slug' => FormHelper::makeInput(
+                inputType: 'text',
+                key: 'slug',
+                label: 'Category-Slug',
+                properties: ['required' => true],
+                updateOnEvents: ['name' => [
+                    'serviceclass' => ProductService::class,
+                    'method' => 'getslug'
+                ]]
+            ),
+           
+        ];
     }
 
     private function getQuery()
@@ -209,23 +203,30 @@ class CategoryService implements ModelViewConnector {
         //     }
         // ]);
     }
+    public function getSlug($data)
+    {
+        return new InputUpdateResponse(
+            result: Str::slug($data['value']),
+            message: 'success',
+            isvalid: true
+        );
+    }
 
     public function getStoreValidationRules(): array
     {
-        return [];
-        // // Example:
-        // return [
-        //     'title' => ['required', 'string'],
-        //     'description' => ['required', 'string'],
-        // ];
+       
+        return [
+            'name' => ['required', 'string'],
+            'slug' => ['required', 'string'],
+        ];
     }
 
     public function getUpdateValidationRules($id): array
     {
-        return [];
-        // // Example:
-        // $arr = $this->getStoreValidationRules();
-        // return $arr;
+        return [
+            'name' => ['required', 'string'],
+            'slug' => ['required', 'string'],
+        ];
     }
 
     public function processBeforeStore(array $data): array
@@ -256,18 +257,16 @@ class CategoryService implements ModelViewConnector {
 
     public function buildCreateFormLayout(): array
     {
-        return (new ColumnLayout())->getLayout();
-        // // Example
-        //  $layout = (new ColumnLayout())
-        //     ->addElements([
-        //             (new RowLayout())
-        //                 ->addElements([
-        //                     (new ColumnLayout(width: '1/2'))->addInputSlot('title'),
-        //                     (new ColumnLayout(width: '1/2'))->addInputSlot('description'),
-        //                 ])
-        //         ]
-        //     );
-        // return $layout->getLayout();
+         $layout = (new ColumnLayout())
+            ->addElements([
+                    (new RowLayout())
+                        ->addElements([
+                            (new ColumnLayout(width: '1/2'))->addInputSlot('name'),
+                            (new ColumnLayout(width: '1/2'))->addInputSlot('slug'),
+                        ])
+                ]
+            );
+        return $layout->getLayout();
     }
 }
 

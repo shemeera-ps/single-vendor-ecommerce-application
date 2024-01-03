@@ -22,6 +22,7 @@ class ProductFactory extends Factory
             'slug'=>Str::slug($name),
             'price'=>499.80,
             'description'=>fake()->paragraphs(2,true),
+            'quantity'=>10,
         ];
     }
 }

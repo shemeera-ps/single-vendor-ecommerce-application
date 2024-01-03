@@ -48,15 +48,73 @@ class SidebarService implements SidebarServiceInterface
                         'show' => $this->showPermissions()
                     ],
                 ],
-                [
-                    'type' => 'menu_item',
-                    'title' => 'Products',
-                    'route' => 'products.index',
-                    'route_params' => [],
-                    'icon' => 'easyadmin::icons.users',
-                    'show' => $this->showRoles()
-                ],
+                
             ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Categories',
+                'route' => 'categories.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showCategories()
+            ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Products',
+                'route' => 'products.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showProducts()
+            ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Product Quantities',
+                'route' => 'quantities.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showRoles()
+            ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Tags',
+                'route' => 'tags.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showTags()
+            ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Product Tags',
+                'route' => 'producttags.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showProductTags()
+            ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Address',
+                'route' => 'addresses.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showAddress()
+            ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Address tags',
+                'route' => 'addresstags.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showAddressTags()
+            ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Product Sizes',
+                'route' => 'sizes.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showProductSizes()
+            ],
+
 
             // [
             //     'type' => 'menu_section',
@@ -96,6 +154,38 @@ class SidebarService implements SidebarServiceInterface
     private function showPermissions()
     {
         return auth()->check();
+    }
+    private function showProducts()
+    {
+        return auth()->user()->hasPermissionTo('Products-Add');
+    }
+    private function showCategories()
+    {
+        return auth()->user()->hasPermissionTo('Categories-Add');
+    }
+    private function showQuantity()
+    {
+        return auth()->user()->hasPermissionTo('Quantity-Add');
+    }
+    private function showTags()
+    {
+        return auth()->user()->hasPermissionTo('Tags-Add');
+    }
+    private function showProductTags()
+    {
+        return auth()->user()->hasPermissionTo('Categories-Add');
+    }
+    private function showAddress()
+    {
+        return auth()->user()->hasPermissionTo('Address-Add');
+    }
+    private function showAddressTags()
+    {
+        return auth()->user()->hasPermissionTo('Address-Tag-Add');
+    }
+    private function showProductSizes()
+    {
+        return auth()->user()->hasPermissionTo('Size-Add');
     }
 }
 ?>

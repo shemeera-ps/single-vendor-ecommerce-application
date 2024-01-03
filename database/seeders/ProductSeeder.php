@@ -14,20 +14,19 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $categories=Category::all();
+        $categories = Category::inRandomOrder()->get();
         
-        foreach($categories as $category){
-            
-            for($i=0;$i<20;$i++){
-                $name=fake()->name;
-                Product::create([
-                    'category_id'=>$category->id,
-                    'name'=>$name,
-                    'slug'=>Str::slug($name),
-                    'price'=>499.80,
-                    'description'=>fake()->paragraphs(2,true),
-                ]);
-            }
+        $products = config('product.products');
+        
+        foreach ($products as $product) {
+            Product::create([
+                'category_id' => $categories->first()->id,
+                'name' => $product['name'],
+                'slug' => $product['slug'],
+                'price' => $product['price'],
+                'description' => $product['description'],
+                'quantity'=>fake()->numberBetween(2,10),
+            ]);
         }
     }
 }

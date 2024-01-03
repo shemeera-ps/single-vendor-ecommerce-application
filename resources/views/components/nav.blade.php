@@ -27,12 +27,12 @@
 <div class="section2 sm:w-1/2 sm:flex-col lg:w-full md:h-2/3 sm:h-2/3 md:bg-white sm:bg-white sm:border-none md:border-none sm:fixed md:fixed md:flex sm:flex sm:left-[-28px]  md:left-[-28px] md:pl-20 sm:pl-20 md:pr-10 sm:pr-10 sm:top-0 md:top-0 sm:z-50 md:z-50  md:w-1/2  md:flex-col md:justify-center md:items-center lg:flex lg:flex-row lg:justify-between lg:items-start lg:my-0 lg:px-20  sm:mx-0  lg:py-8  lg:border-light-bg-color lg:relative">
     <i class="ri-close-line lg:hidden sm:flex md:flex absolute md:left-96 sm:left-64 md:top-8 sm:top-8 text-2xl text-secondary-color cursor-pointer" id="close"></i>
     
-    <div class="logo sm:flex lg:flex lg:relative md:flex sm:absolute md:absolute md:left-4 md:top-16 sm:top-20 lg:top-0 lg:justify-center lg:items-center sm:justify-center sm:items-center md:justify-center md:items-centerlg:flex-col md:flex-col sm:flex-col md:pl-10 sm:pl-10 ">
+    <div class="logo sm:flex lg:flex lg:relative md:flex sm:absolute md:absolute md:left-20 md:top-16 sm:top-20 lg:top-0 lg:justify-center lg:items-center sm:justify-center sm:items-center md:justify-center md:items-centerlg:flex-col md:flex-col sm:flex-col md:pl-10 sm:pl-10 ">
         <h1 class="text-secondary-color text-lg md:text-xl lg:text-2xl">Shop With Us</h1>
         <p class="text-center text-stone-600 text-sm md:text-base">Everything You Need</p>
     </div>
 
-    <div class="search lg:relative  lg:flex md:flex sm:absolute md:absolute md:left-8 md:top-36 sm:top-36 md:pl-4 sm:pl-4 lg:pl-0 lg:top-0">
+    <div class="search lg:relative  lg:flex md:flex sm:absolute md:absolute md:left-20 md:top-36 sm:top-36 md:pl-4 sm:pl-4 lg:pl-0 lg:top-0">
         <form action="{{ route('search') }}" method="post">
             @csrf
             <input type="text" name="search" id="" placeholder="Search for a product..." class="p-2 md:p-[1vw]  md:w-96 rounded-xl">
@@ -40,7 +40,7 @@
         </form>
     </div>
 
-    <div class="nav-links  lg:flex lg:flex-row md:flex sm:absolute md:absolute md:left-4 md:top-56 sm:top-56 sm:flex sm:flex-col md:flex-col md:pl-20 sm:pl-20 lg:pl-0 lg:relative lg:top-0">
+    <div class="nav-links  lg:flex lg:flex-row md:flex sm:absolute md:absolute md:left-20 md:top-56 sm:top-56 sm:flex sm:flex-col md:flex-col md:pl-20 sm:pl-20 lg:pl-0 lg:relative lg:top-0">
         <ul class="flex sm:flex justify-center items-center md:flex-col sm:flex-col lg:flex-row">
             <li class="text-sm md:text-base lg:text-lg lg:mr-4 md:mr-0 sm:mr-0 md:pb-4 sm:pb-4"><a href="{{ route('productIndex') }}" class="lg:text-base lg:transition-transform lg:duration-300 lg:ease-in-out lg:font-light lg:hover:text-dark-color">Home</a></li>
             <li class="text-sm md:text-base lg:text-lg lg:mr-4 md:mr-0 sm:mr-0 md:pb-4 sm:pb-4"><a href="{{ route('orderIndex') }}" class="lg:text-base lg:transition-transform lg:duration-300 lg:ease-in-out lg:font-light lg:hover:text-dark-color">Orders</a></li>

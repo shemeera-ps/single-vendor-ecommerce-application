@@ -27,7 +27,14 @@
                     <i class="ri-share-forward-line text-white  p-2 rounded-full bg-primary-color bg-opacity-15 backdrop-blur-md shadow-md text-center"></i>
                 </a>
             </li>
-            <img src="{{asset('images/product_01.jpg')}}" alt="">
+            <div class="flex group">
+                <div class="w-full relative transition-opacity duration-500 ease-in-out">
+                    <a href="{{ route('productShow' , $product->id )}}">
+                        <img alt="{{asset('images/product_01.jpg')}}" src="{{  $product->getSingleMediaUrl('image') }}" class="w-full group-hover:hidden">
+                        <img alt="{{asset('images/product_01.jpg')}}" src="{{  $product->getSingleMediaUrl('imageSecond') }}" class="w-full hidden group-hover:flex">
+                    </a>
+                </div>
+            </div>
             <div class="cart  hover:bg-green-500 flex justify-center py-2 bg-primary-color text-white transition-transform duration-300 ease-in-out transform translate-y-full absolute left-0 right-0 bottom-0 w-full opacity-0 mt-4">
                 <form action="{{ route('addToCart') }}" method="post">
                     @csrf

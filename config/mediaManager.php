@@ -13,6 +13,7 @@ use Modules\Ynotz\MediaManager\Services\GalleryService;
         'files_folder' => 'public/files',
         'gallery_service' => GalleryService::class,
         'gallery_route' => 'mediamanager.gallery',
-        'ulid_separator' => '_ulid::'
+        'ulid_separator' => '_ulid_',
+        'tmp_separator' => '_tmp_'
     ];
 ?>

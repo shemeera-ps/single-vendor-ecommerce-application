@@ -17,16 +17,7 @@
     @endif
 
     @if($orders->count() > 0)
-    <!-- <div class="white-preview">
-    <div class="btn-container">
-    
-      <label class="switch btn-color-mode-switch">
-            <input type="checkbox" name="color_mode" id="color_mode" value="1">
-            <label for="color_mode" data-on="Previous" data-off="Present" class="btn-color-mode-switch-inner"></label>
-        </label>
-     
-  </div>
-    </div> -->
+  
 
 
     <div class="">
@@ -34,7 +25,7 @@
         <div class="flex  justify-center items-center gap-10  shadow-sm mb-10">
             @foreach($order->orderItem as $item)
             <div id="product" class="  py-10  relative transition-transform duration-300 ease-in-out">
-                <img src="{{asset('images/product_02.jpg')}}" alt="" class="h-40">    
+                <img src="{{  $item->product->getSingleMediaUrl('image') }}" alt="" class="h-40">    
                 <h4 class="p-2 text-lg">{{ $item->product->name }}</h4>
                 <p>Packet of ({{$item->count}})</p>
                 <p class="p-2 text-base"><i class="fa-solid fa-indian-rupee-sign pr-1"></i>{{ $item->price }}</p>

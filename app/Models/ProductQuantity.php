@@ -9,5 +9,5 @@ class ProductQuantity extends Model
 {
     use HasFactory;
     protected $guarded=[];
-    public function products()
+   
 }

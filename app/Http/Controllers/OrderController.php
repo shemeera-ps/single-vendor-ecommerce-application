@@ -64,6 +64,10 @@ class OrderController extends SmartController
             $item->delete();
         }
 
-        return redirect()->back()->with('sucess', 'Order Placed');
+        return redirect('payments');
+    }
+    public function payments(Request $request){
+        $categories = Category::all();
+        return view('display.payments',['categories'=>$categories]);
     }
 }
