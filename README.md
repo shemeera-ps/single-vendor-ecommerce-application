@@ -2,9 +2,7 @@
 <p align="center">
   <img src="public/screenshot/screenshot1.png" alt="GitHub Logo">
 </p>
-<p align="center">
-  <img src="public/screenshot/screenshot2.png" alt="GitHub Logo">
-</p>
+
 <p align="center">
   <img src="public/screenshot/screenshot3.png" alt="GitHub Logo">
 </p>
