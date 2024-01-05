@@ -2,6 +2,10 @@
 <p align="center">
   <img src="public/screenshot/screenshot1.png" alt="GitHub Logo">
 </p>
+
+<p align="center">
+  <img src="public/screenshot/screenshot3.png" alt="GitHub Logo">
+</p>
 This is a single-vendor eCommerce application built using Laravel . The application provides a platform for a single seller to showcase and sell products to customers. It follows a modern, scalable architecture to deliver a seamless shopping experience.The front end is rich with classy CSS and JS features.
 
 ## Features
