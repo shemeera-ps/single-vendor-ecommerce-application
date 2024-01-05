@@ -64,6 +64,11 @@ return [
         "Size-Update",
         "Size-View",
         "Size-Delete",
+        "Product-Variant-Add",
+        "Product-Variant-Update",
+        "Product-Variant-View",
+        "Product-Variant-Delete",
+
         
     ],
     'roles'=>[

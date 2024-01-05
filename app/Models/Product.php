@@ -15,7 +15,9 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
-    
+    public function productVariants(){
+        return $this->hasMany(ProductVariant::class);
+    }
 
     public function orderitem(){
         return $this->hasMany(OrderItem::class);
@@ -52,6 +54,8 @@ class Product extends Model
     {
         return Attribute::make(
             get: function ($value) {
+                
+
                 return $this->getSingleMediaForEAForm('image');
             }
         );

@@ -96,6 +96,7 @@ class ProductService implements ModelViewConnector {
         
         return $this->indexTable->addColumn(
             fields: ['name'],
+            component:'custom.text'
         )->addColumn(
                 fields: ['name'],
                 relation:'category'
@@ -106,7 +107,6 @@ class ProductService implements ModelViewConnector {
             fields: ['quantity'],
         )->addColumn(
             fields: ['description'],
-           
         )
         ->addActionColumn(
             editRoute: $this->getEditRoute(),
@@ -167,7 +167,8 @@ class ProductService implements ModelViewConnector {
                 success_redirect_route: 'products.index',
                 items: $this->getCreateFormElements(),
                 layout: $this->buildCreateFormLayout(),
-                label_position: 'top'
+                label_position: 'top',
+                width: 'full'
             )
         );
     }
@@ -183,7 +184,8 @@ class ProductService implements ModelViewConnector {
                 action_route_params: ['id' => $id],
                 success_redirect_route: 'products.index',
                 items: $this->getEditFormElements(),
-                label_position: 'top'
+                label_position: 'top',
+                width: 'full'
             ),
             instance: $this->getQuery()->where('id', $id)->get()->first()
         );

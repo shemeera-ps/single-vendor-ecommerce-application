@@ -8,6 +8,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTagController;
+use App\Http\Controllers\ProductvariantController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -86,6 +87,10 @@ RouteHelper::getEasyRoutes(
 RouteHelper::getEasyRoutes(
     modelName:'Size',
     controller:SizeController::class
+);
+RouteHelper::getEasyRoutes(
+    modelName:'ProductVariant',
+    controller:ProductvariantController::class
 );
 
 Route::get('/index',[ProductController::class,'productIndex'])->name('productIndex');

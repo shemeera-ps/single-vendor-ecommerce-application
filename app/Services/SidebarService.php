@@ -114,6 +114,14 @@ class SidebarService implements SidebarServiceInterface
                 'icon' => 'easyadmin::icons.users',
                 'show' => $this->showProductSizes()
             ],
+            [
+                'type' => 'menu_item',
+                'title' => 'Product Variants',
+                'route' => 'productvariants.index',
+                'route_params' => [],
+                'icon' => 'easyadmin::icons.users',
+                'show' => $this->showProductSizes()
+            ],
 
 
             // [
@@ -186,6 +194,10 @@ class SidebarService implements SidebarServiceInterface
     private function showProductSizes()
     {
         return auth()->user()->hasPermissionTo('Size-Add');
+    }
+    private function showProductVariants()
+    {
+        return auth()->user()->hasPermissionTo('Product-Variant-Add');
     }
 }
 ?>

@@ -53,6 +53,7 @@ class RolePermissionSeeder extends Seeder
                 "Address-Add",
                 "Address-Tag-Add",
                 "Size-Add",
+                "Product-Variant-Add",
 
                 'System Settings: Create',
                 'System Settings: View',
@@ -84,6 +85,7 @@ class RolePermissionSeeder extends Seeder
                 "Address-Add",
                 "Address-Tag-Add",
                 "Size-Add",
+                "Product-Variant-Add",
 
 
                 'App Settings: View',
@@ -112,6 +114,7 @@ class RolePermissionSeeder extends Seeder
                 "Address-Add",
                 "Address-Tag-Add",
                 "Size-Add",
+                "Product-Variant-Add",
 
             ],
             'Regular User'=>[
