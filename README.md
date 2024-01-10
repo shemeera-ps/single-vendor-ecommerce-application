@@ -30,5 +30,5 @@ This project is licensed under the MIT License.
   <img src="public/screenshot/screenshot3.png" alt="GitHub Logo">
 </p>
 <p align="center">
-  <img src="public/screenshot/screenshot2.png" alt="GitHub Logo">
+  <img src="public/screenshot/screenshot4.png" alt="GitHub Logo">
 </p>
