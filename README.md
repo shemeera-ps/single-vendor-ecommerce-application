@@ -27,7 +27,7 @@ Contributions are welcome! Please follow our contribution guidelines to contribu
 This project is licensed under the MIT License.
 <br/>
 <p align="center">
-  <img src="public/screenshot/screenshot1.png" alt="GitHub Logo">
+  <img src="public/screenshot/screenshot3.png" alt="GitHub Logo">
 </p>
 <p align="center">
   <img src="public/screenshot/screenshot2.png" alt="GitHub Logo">
